@@ -59,7 +59,13 @@ export default function TagInput({ tags }: TagInputProps) {
 
   return (
     <div>
-      <BaseTextInput input={input} setInput={setInput} />
+      <BaseTextInput
+        input={input}
+        setInput={setInput}
+        highlightedIndex={highlightedIndex}
+        searchResult={searchResult}
+        addTag={addTag}
+      />
 
       <List
         searchResult={searchResult}
