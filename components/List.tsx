@@ -1,5 +1,5 @@
 import React, { MouseEvent } from "react";
-import type { Tag } from "./TagInput";
+import type { Tag } from "@components/TagInput";
 
 type ListProps = {
   searchResult: Tag[];

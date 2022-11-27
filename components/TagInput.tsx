@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import BaseTextInput from "./BaseTextInput";
-import List from "./List";
-import Tags from "./Tags";
-import { checkIfTagAlreadyExists } from "../helpers/helpers";
+import BaseTextInput from "@components//BaseTextInput";
+import List from "@components/List";
+import Tags from "@components/Tags";
+import { checkIfTagAlreadyExists } from "@helpers/helpers";
 import FuzzySearch from "fuzzy-search";
 import { toast } from "react-toastify";
 

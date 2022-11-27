@@ -1,9 +1,9 @@
 import Head from "next/head";
-import TagInput from "../components/TagInput";
-import { GlobalStyle } from "../styles/GlobalStyle";
-import { TagInputUiStyled } from "../styles/TagInputUI";
-import { NEXT_URL } from "../config/config";
-import type { Tag } from "../components/TagInput";
+import TagInput from "@components/TagInput";
+import { GlobalStyle } from "@styles/GlobalStyle";
+import { TagInputUiStyled } from "@styles/TagInputUI";
+import { NEXT_URL } from "@config/config";
+import type { Tag } from "@components/TagInput";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

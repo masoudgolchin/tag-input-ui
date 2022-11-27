@@ -1,6 +1,6 @@
 import React from "react";
-import { TagsStyle } from "../styles/TagInputUI";
-import type { Tag } from "./TagInput";
+import { TagsStyle } from "@styles/TagInputUI";
+import type { Tag } from "@components//TagInput";
 
 type TagsProps = {
   selectedTags: Tag[];
