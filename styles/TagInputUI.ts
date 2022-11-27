@@ -6,6 +6,7 @@ export const TagInputUiStyled = styled.div`
   flex-direction: column;
   position: relative;
   box-sizing: border-box;
+
   input {
     background: white;
     border: 1px solid #f8f8f8;
@@ -13,7 +14,7 @@ export const TagInputUiStyled = styled.div`
     align-self: stretch;
     padding: 8px;
     color: #434343;
-
+    width: 100%;
     :focus {
       outline: none;
       border: 1px solid #f1f2f3;

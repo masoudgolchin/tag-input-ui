@@ -2,8 +2,14 @@ import Head from "next/head";
 import TagInput from "../components/TagInput";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { TagInputUiStyled } from "../styles/TagInputUI";
+import { NEXT_URL } from "../config/config";
+import type { Tag } from "../components/TagInput";
 
-export default function Home() {
+type HomeProps = {
+  tags: Tag[];
+};
+
+export default function Home({ tags }: HomeProps) {
   return (
     <>
       <GlobalStyle />
@@ -14,8 +20,23 @@ export default function Home() {
       </Head>
 
       <TagInputUiStyled>
-        <TagInput />
+        <TagInput tags={tags} />
       </TagInputUiStyled>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(`${NEXT_URL}/api/tags`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  const tags = await res.json();
+
+  return {
+    props: { tags },
+  };
 }

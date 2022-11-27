@@ -5,15 +5,17 @@ type ListProps = {
   searchResult: Tag[];
   highlightedIndex: number;
   setHighlightedIndex: (index: number) => void;
+  showList: boolean;
 };
 
 export default function List({
   searchResult,
   highlightedIndex,
   setHighlightedIndex,
+  showList,
 }: ListProps) {
   return (
-    <ul tabIndex={-1}>
+    <ul tabIndex={-1} className={showList ? "show" : "hide"}>
       {searchResult.map((item: Tag, index: number) => {
         return (
           <li
