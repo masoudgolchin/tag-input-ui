@@ -22,7 +22,10 @@ export default function Tags({ selectedTags, setSelectedTags }: TagsProps) {
           <a
             href="#"
             key={item.id}
-            onClick={(e: MouseEvent<HTMLElement>) => handleRemoveOnClick(item)}
+            onClick={(e: MouseEvent<HTMLElement>) => {
+              e.preventDefault();
+              handleRemoveOnClick(item);
+            }}
           >
             {item.label}
           </a>
