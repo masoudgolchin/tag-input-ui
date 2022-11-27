@@ -1,10 +1,30 @@
-import React from "react";
+import React, { MouseEvent } from "react";
+import type { Tag } from "./TagInput";
 
-export default function List() {
+type ListProps = {
+  searchResult: Tag[];
+  highlightedIndex: number;
+  setHighlightedIndex: (index: number) => void;
+};
+
+export default function List({
+  searchResult,
+  highlightedIndex,
+  setHighlightedIndex,
+}: ListProps) {
   return (
-    <ul>
-      <li>Hello</li>
-      <li>There</li>
+    <ul tabIndex={-1}>
+      {searchResult.map((item: Tag, index: number) => {
+        return (
+          <li
+            key={item.id}
+            className={highlightedIndex === index ? "highlighted" : ""}
+            onMouseOver={(e: MouseEvent) => setHighlightedIndex(index)}
+          >
+            {item.label}
+          </li>
+        );
+      })}
     </ul>
   );
 }
