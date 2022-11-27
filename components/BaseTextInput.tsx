@@ -1,5 +1,5 @@
 import React, { ChangeEvent, KeyboardEvent } from "react";
-import { slugify } from "../Helpers/helpers";
+import { slugify } from "../helpers/helpers";
 import { Tag } from "./TagInput";
 
 type BaseTextInputProps = {
