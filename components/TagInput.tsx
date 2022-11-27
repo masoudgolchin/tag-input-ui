@@ -21,6 +21,26 @@ export default function TagInput({ tags }: TagInputProps) {
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
   const fuse = useRef<any>([]);
+  const initialRef: any = null;
+  const inputRef = useRef(initialRef);
+
+  useEffect(() => {
+    // Close suggestion list when click outside of the box
+    const fn = (e: Event) => {
+      if (
+        inputRef.current &&
+        showList &&
+        !inputRef.current.contains(e.target)
+      ) {
+        setShowList(false);
+      }
+    };
+
+    document.addEventListener("click", fn);
+
+    // Clean up function
+    return () => document.removeEventListener("click", fn);
+  }, [showList]);
 
   useEffect(() => {
     fuse.current = new FuzzySearch(tags, ["label"], {
@@ -68,6 +88,7 @@ export default function TagInput({ tags }: TagInputProps) {
         searchResult={searchResult}
         setSearchResult={setSearchResult}
         addTag={addTag}
+        inputRef={inputRef}
       />
 
       <List

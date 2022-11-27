@@ -10,6 +10,7 @@ type BaseTextInputProps = {
   searchResult: Tag[];
   setSearchResult: (item: Tag[]) => void;
   addTag: (item: Tag) => void;
+  inputRef: any;
 };
 export default function BaseTextInput({
   input,
@@ -19,6 +20,7 @@ export default function BaseTextInput({
   searchResult,
   setSearchResult,
   addTag,
+  inputRef,
 }: BaseTextInputProps) {
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     const keysArray = ["Comma", "Enter", "Escape", "ArrowDown", "ArrowUp"];
@@ -65,6 +67,7 @@ export default function BaseTextInput({
   return (
     <>
       <input
+        ref={inputRef}
         placeholder="Add tags..."
         type="text"
         value={input}
