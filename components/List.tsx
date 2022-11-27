@@ -3,9 +3,10 @@ import type { Tag } from "./TagInput";
 
 type ListProps = {
   searchResult: Tag[];
-  highlightedIndex: number;
+  highlightedIndex: number | null;
   setHighlightedIndex: (index: number) => void;
   showList: boolean;
+  addTag: (item: Tag) => void;
 };
 
 export default function List({
@@ -13,6 +14,7 @@ export default function List({
   highlightedIndex,
   setHighlightedIndex,
   showList,
+  addTag,
 }: ListProps) {
   return (
     <ul tabIndex={-1} className={showList ? "show" : "hide"}>
@@ -22,6 +24,7 @@ export default function List({
             key={item.id}
             className={highlightedIndex === index ? "highlighted" : ""}
             onMouseOver={(e: MouseEvent) => setHighlightedIndex(index)}
+            onClick={() => addTag(item)}
           >
             {item.label}
           </li>

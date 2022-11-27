@@ -66,6 +66,7 @@ export default function TagInput({ tags }: TagInputProps) {
         highlightedIndex={highlightedIndex}
         setHighlightedIndex={setHighlightedIndex}
         showList={showList}
+        addTag={addTag}
       />
       {selectedTags.length > 0 && <Tags selectedTags={selectedTags} />}
     </div>
