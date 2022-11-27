@@ -100,7 +100,9 @@ export default function TagInput({ tags }: TagInputProps) {
         showList={showList}
         addTag={addTag}
       />
-      {selectedTags.length > 0 && <Tags selectedTags={selectedTags} />}
+      {selectedTags.length > 0 && (
+        <Tags selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+      )}
     </div>
   );
 }
