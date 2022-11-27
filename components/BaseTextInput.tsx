@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 import { slugify } from "../Helpers/helpers";
 import { Tag } from "./TagInput";
 
@@ -20,7 +20,7 @@ export default function BaseTextInput({
   setSearchResult,
   addTag,
 }: BaseTextInputProps) {
-  function handleKeyDown(e: KeyboardEvent) {
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     const keysArray = ["Comma", "Enter", "Escape", "ArrowDown", "ArrowUp"];
     if (!keysArray.includes(e.code)) {
       return;
@@ -56,6 +56,12 @@ export default function BaseTextInput({
     }
   }
 
+  function handleBlur(e: any) {
+    if (e.relatedTarget === null) {
+      setSearchResult([]);
+    }
+  }
+
   return (
     <>
       <input
@@ -66,7 +72,7 @@ export default function BaseTextInput({
           setInput(e.target.value)
         }
         onKeyDown={handleKeyDown}
-        // onBlur={handleBlur}
+        onBlur={handleBlur}
       />
     </>
   );
