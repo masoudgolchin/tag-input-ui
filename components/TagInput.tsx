@@ -18,7 +18,7 @@ export default function TagInput({ tags }: TagInputProps) {
   const [input, setInput] = useState<string>("");
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [searchResult, setSearchResult] = useState<Tag[]>([]);
-  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
   const fuse = useRef<any>([]);
 
@@ -34,16 +34,17 @@ export default function TagInput({ tags }: TagInputProps) {
       setHighlightedIndex(0);
     } else {
       setSearchResult([]);
-      setHighlightedIndex(null);
+      setHighlightedIndex(-1);
     }
   }, [input]);
 
   useEffect(() => {
     if (searchResult.length > 0 && input.length > 0) {
       setShowList(true);
+      setHighlightedIndex(0);
     } else {
       setShowList(false);
-      setHighlightedIndex(null);
+      setHighlightedIndex(-1);
     }
   }, [searchResult, input]);
 
@@ -63,7 +64,9 @@ export default function TagInput({ tags }: TagInputProps) {
         input={input}
         setInput={setInput}
         highlightedIndex={highlightedIndex}
+        setHighlightedIndex={setHighlightedIndex}
         searchResult={searchResult}
+        setSearchResult={setSearchResult}
         addTag={addTag}
       />
 

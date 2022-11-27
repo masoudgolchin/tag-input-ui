@@ -3,7 +3,7 @@ import type { Tag } from "./TagInput";
 
 type ListProps = {
   searchResult: Tag[];
-  highlightedIndex: number | null;
+  highlightedIndex: number;
   setHighlightedIndex: (index: number) => void;
   showList: boolean;
   addTag: (item: Tag) => void;

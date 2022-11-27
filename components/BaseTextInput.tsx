@@ -4,16 +4,20 @@ import { Tag } from "./TagInput";
 
 type BaseTextInputProps = {
   input: string;
-  setInput: (text: string) => void;
-  highlightedIndex: number | null;
+  setInput: (text: string) => void | string;
+  highlightedIndex: number;
+  setHighlightedIndex: any; //(index: number) => void | number;
   searchResult: Tag[];
+  setSearchResult: (item: Tag[]) => void;
   addTag: (item: Tag) => void;
 };
 export default function BaseTextInput({
   input,
   setInput,
   highlightedIndex,
+  setHighlightedIndex,
   searchResult,
+  setSearchResult,
   addTag,
 }: BaseTextInputProps) {
   function handleKeyDown(e: KeyboardEvent) {
@@ -35,6 +39,19 @@ export default function BaseTextInput({
           slug = slugify(itemValue);
         }
         addTag({ id: slug, label: itemValue });
+        break;
+      case "Escape":
+        setSearchResult([]);
+        break;
+      case "ArrowDown":
+        if (searchResult.length - 1 > highlightedIndex) {
+          setHighlightedIndex((prev: number) => prev + 1);
+        }
+        break;
+      case "ArrowUp":
+        if (highlightedIndex > 0) {
+          setHighlightedIndex((prev: number) => prev - 1);
+        }
         break;
     }
   }
