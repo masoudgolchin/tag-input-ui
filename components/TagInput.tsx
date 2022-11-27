@@ -4,6 +4,7 @@ import List from "./List";
 import Tags from "./Tags";
 import { checkIfTagAlreadyExists } from "../Helpers/helpers";
 import FuzzySearch from "fuzzy-search";
+import { toast } from "react-toastify";
 
 export type Tag = {
   id: string;
@@ -71,11 +72,12 @@ export default function TagInput({ tags }: TagInputProps) {
   function addTag(item: Tag) {
     setShowList(false);
     if (checkIfTagAlreadyExists(item, selectedTags)) {
-      console.log("exists");
+      toast.error("You can not add a Tag twice.");
       return;
     }
     setSelectedTags((prev) => [...prev, { ...item }]);
     setInput("");
+    toast.success("Tag added successfuly.");
   }
 
   return (
